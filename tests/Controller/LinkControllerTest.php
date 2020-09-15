@@ -43,14 +43,9 @@ class LinkControllerTest extends WebTestCase
 
         $this->assertEquals($code, $desiredCode);
 
-        /** @var LinkRepository $em */
-        $em = static::$container->get(LinkRepository::class);
-        $qb = $em->createQueryBuilder('l');
-        $qb
-            ->delete()
-            ->where('l.code = :code')
-            ->setParameter('code', $desiredCode);
-        $qb->getQuery()->execute();
+        /** @var LinkRepository $repo */
+        $repo = static::$container->get(LinkRepository::class);
+        $repo->deleteByCode($desiredCode);
     }
 
     public function testCreateInvalidCode()

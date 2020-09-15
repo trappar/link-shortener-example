@@ -19,36 +19,13 @@ class LinkRepository extends ServiceEntityRepository
         parent::__construct($registry, Link::class);
     }
 
-    public function codeExists($code) {
-        $this->findOneBy(['code' => $code]);
-    }
-
-    // /**
-    //  * @return Link[] Returns an array of Link objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function deleteByCode($code)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('l');
+        $qb
+            ->delete()
+            ->where('l.code = :code')
+            ->setParameter('code', $code);
+        $qb->getQuery()->execute();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Link
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
