@@ -5,13 +5,20 @@ This is a simple demo project.
 
 It supports:
 * Creating, viewing, and deleting short links
-* Allows for custom vanity URLs
+* Allows for creation of custom vanity URLs
 * Allows users to see how many times their link has been visited
 * Uses a basic REST API
 * Supports frontend and backend validation
 * Frontend is written in React
 
-I tried to keep things fairly simple. I'm sure there are libraries I could have leveraged to simplify some of the functionality, but this project is simple enough that it didn't feel warranted. There is also plenty of room for refactoring, but that would only be necessary if additional features or complexity were added.
+### Motivation
+
+I try to strike a balance between writing solid extensible code and not over-enginering solutions. In this case I'm sure there are libraries I could have leveraged to simplify some functionality, but this project is simple enough that it didn't feel warranted. I think that my solutions leave sufficient room for adapting to changes in requirements - and that's what's really important. 
+
+Some examples in my decision making process were:
+
+* I could have pulled several methods out of the LinkController and moved them into a service. This would have made it easier/possible to unit test and improved separation of concerns, but also would have cost time, fragmented the code, and would not have reduced code duplication. I opted to keep things simple.
+* I could have used the Symfony form system for at least handling the form processing, but it just felt like overkill. The boilerplate would have outweighed the code it replaced.
 
 ### Installing
 
